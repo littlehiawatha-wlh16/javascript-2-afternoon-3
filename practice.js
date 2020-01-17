@@ -29,8 +29,11 @@
 
 // Code Here 
 function first(array,callbackFn){
+
+  callbackFn(array[0])
   
 }
+
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -52,6 +55,10 @@ first(names, function(firstName){
 
 //Code Here
 
+function last(array,callbackFn){
+  callbackFn(array[array.length-1])
+}
+
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -69,6 +76,10 @@ last(names, function(lastName){
 */
 
 //Code Here
+
+function multiply(num1,num2,callbackFn){
+  callbackFn(num1*num2)
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -88,6 +99,17 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
+
+function contains(arr, name, callbackFn){
+  for(let i = 0; i <= 0; i ++){
+    if(arr[i] === name){
+      callbackFn(true)
+    } else {
+      callbackFn(false)
+    } 
+
+  }
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -110,6 +132,46 @@ contains(names, 'Colt', function(result){
 
 //Code Here
 
+
+function uniq(array, callbackFn){
+    for(let i = 0; i < array.length; i++){
+      for (let q = i + 1; q < array.length; q++) {
+        
+      if(array[i] === array[q] /*&& i !== q*/){
+        array.splice(q,1);
+       }
+      }
+   }
+   return callbackFn(array);
+} // I do not understand this using double forLoops
+
+
+
+// // --- option 1 -----//
+// function uniq(arr, cb) {
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < arr.length; j++ ) {
+//       if (arr[i] === arr[j] && i !== j) {
+//         arr.splice(j, 1)
+//       }
+//     }
+//   }
+//   //return arr
+//   return cb(arr)
+// }
+
+// uniq([1,2,2,2,3,3,4])
+
+
+// // --- option 2 -----//
+
+// function uniq(array, callback){
+//   let unique = Array.from(new Set(array))
+//   callback(unique)
+// }
+
+
+
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -127,6 +189,21 @@ uniq(names, function(uniqArr){
 
 //Code Here 
 
+function each(namesArray,callback){
+  for(let i = 0; i < namesArray.length; i++){
+    callback(namesArray[i],i)
+  }
+}
+
+
+// --- correct solution--------
+// function each(arr,cb){
+//   for(let i = 0; i < arr.length; i++) {
+//     cb(arr[i],i)
+
+//   }
+// }
+
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -143,6 +220,36 @@ each(names, function(item, indice){
 */
 
 // Code here
+
+function getUserById(arrayParameter, idParameter, callbackParameter){
+  for(let i = 0; i < arrayParameter.length; i++){
+    if(arrayParameter[i].id === idParameter){
+      callbackParameter(arrayParameter[i])
+    }
+  }
+}
+
+// getUserById(users, '#51230', addToList) ----> we could use this line to search our example database for a particular user
+
+
+// ------- incorrect answer ------
+// function getUserById(users, id, callback){
+
+//   for(let i = 0; i < users.length; i++){
+//     if(id === users[i].id){
+//       cakkback(users[i])
+//     }
+//   }
+
+// }
+  //-------- incorrect answer ------------
+// function getUserById(users, id, callback){
+//   for( i = 0; i < arr.length; i++){
+//     if(users[i].id === id){
+//       callback(users[i])
+//     }
+//   }
+// }
 
 // Do not edit the code below.
 var users = [
